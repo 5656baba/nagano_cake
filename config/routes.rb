@@ -3,10 +3,6 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {
     sessions: 'admin/sessions'
   }
-  devise_for :customers, path: "customers", controllers: {
-    registrations: 'public/registrations',
-    sessions: 'public/sessions'
-  }
   namespace :admin do
     root to: 'homes#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
@@ -38,6 +34,10 @@ Rails.application.routes.draw do
     end
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
+  devise_for :customers, path: "customers", controllers: {
+    registrations: 'public/registrations',
+    sessions: 'public/sessions'
+  }
 end
 
 

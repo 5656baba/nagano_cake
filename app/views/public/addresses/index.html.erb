@@ -33,7 +33,7 @@
 </table>
 <% end %>
 <table>
-  <%= @addresses.each do |address| %>
+  <% @addresses.each do |address| %>
   <tr>
     <th>郵便番号</th>
     <th>住所</th>
@@ -45,7 +45,7 @@
     <td><%= address.address %></td>
     <td><%= address.name %></td>
     <td>
-      <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-outline-secondary btn-block btn-secondary" %>
+      <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-outline-secondary btn-block btn-secondary size" %>
       <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-outline-secondary btn-block btn-secondary size", data: {confirm: "Are you certain you want to delete this?"}%>
     </td>
   </tr>

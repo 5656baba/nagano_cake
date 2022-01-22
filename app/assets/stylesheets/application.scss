@@ -56,3 +56,27 @@ table.order-show th{
 table.order th, td{
   white-space: nowrap;
 }
+
+.admin-log-in{
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.admin-log-in>li{
+  margin: 5px;
+  width: calc(50% - 10px);
+}
+
+.form{
+  width: 400px;
+  height: 42px;
+}
+
+.button-size{
+  margin-top: 40px;
+  width: 150px;
+  padding: 10px;
+}

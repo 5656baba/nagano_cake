@@ -11,11 +11,12 @@ class Public::AddressesController < ApplicationController
   def update
     address = Address.find(params[:id])
     address.update(address_params)
-    redirect_to addresses_path(genre.id)
+    redirect_to addresses_path
   end
 
   def create
-    address=Address.new
+    address=Address.new(address_params)   #カラムは全部埋める(外部キーは絶対)
+    address.customer_id=current_customer.id
     address.save
     redirect_to addresses_path
   end
@@ -28,6 +29,6 @@ class Public::AddressesController < ApplicationController
 
   private
   def address_params
-    params.require(:address).permit(:postal_code, :address, :name)
+    params.require(:address).permit(:postal_code, :address, :name, :customer_id)
   end
 end

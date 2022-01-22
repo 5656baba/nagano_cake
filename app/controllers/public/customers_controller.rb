@@ -8,9 +8,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    customer = current_customer
+    customer = current_customer  #今回はcustomer_id飛ばしてないから最初からcustomer=current_customerを入れておく
     customer.update(customer_params)
-    redirect_to customer_path(customer.id)
+    redirect_to customers_path
   end
 
   def unsubscribe
@@ -25,6 +25,6 @@ class Public::CustomersController < ApplicationController
 
   private
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email)
   end
 end

@@ -1,5 +1,5 @@
 <h1>会員情報編集</h1>
-<%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
+<%= form_with model: @customer, url: customers_path, local:true do |f| %>
 <table>
   <tr>
     <th>氏名</th>
@@ -28,7 +28,6 @@
     <th><%= f.text_field :email %></th>
   </tr>
 </table>
-<% end %>
 <table>
   <tr>
     <th></th>
@@ -41,3 +40,4 @@
     </th>
   </tr>
 </table>
+<% end %>

@@ -7,6 +7,6 @@
 <table>
   <tr>
     <th><%= link_to "退会しない",customers_path %></th>
-    <th><%= link_to "退会する", withdraw_customers_path %></th>
+    <th><%= link_to "退会する", withdraw_customers_path, method: :patch %></th>
   </tr>
 </table>
