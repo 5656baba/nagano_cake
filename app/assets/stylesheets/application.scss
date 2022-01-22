@@ -13,3 +13,46 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+.size{
+ color:#FFF;
+}
+
+.position{
+  margin: 20px 90px;
+}
+
+table.show th{
+  text-align: center;
+}
+
+textarea{
+  border-radius: 4px;
+}
+
+.genre p{
+  display: inline-block;
+  margin: 30px;
+}
+
+table.genre-list th{
+  background-color: #808080;
+}
+td.genre-name{
+  width: 280px;
+}
+
+th.list-button{
+  white-space: nowrap;
+}
+
+table.order-show th{
+  background-color: #808080;
+}
+
+table.order th, td{
+  white-space: nowrap;
+}

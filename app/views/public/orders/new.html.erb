@@ -1,0 +1,59 @@
+<h1>注文情報入力</h1>
+<%= form_with model: @order, url: check_orders_path, local: true do |f| %>
+<div>
+  <h3>支払い方法</h3>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+    <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+    <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
+</div>
+<div>
+  <h3>お届け先</h3>
+  <ul>
+    <li>
+      <%= f.radio_button :address_option, 0 %>
+      <%= f.label :address_option, "ご自身の住所", value: 0 %></br>
+      <%= current_customer.full_address %>
+    </li>
+    <li>
+      <%= f.radio_button :address_option, 1 %>
+      <%= f.label :address_option, "登録済み住所から選択", value: 1 %>
+      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+    </li>
+    <li>
+      <%= f.radio_button :address_option, 2 %>
+      <%= f.label :address_option, "新しいお届け先",value: 2 %>
+    </li>
+  </ul>
+  </div>
+    <table>
+      <tr>
+          <th>郵便番号（ハイフンなし）</th>
+        <th>
+          <div class="field">
+            <%= f.label :delivery_postal_code %><br />
+            <%= f.text_field :delivery_postal_code, autofocus: true, autocomplete: "delivery_postal_code", placeholder:"0000000" %>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <th>
+          <div class="field">
+            <%= f.label :delivery_address %><br />
+            <%= f.text_field :delivery_address, autofocus: true, autocomplete: "delivery_address", placeholder:"東京都渋谷区代々木神園町0-0" %>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th>宛名</th>
+        <th>
+          <div class="field">
+            <%= f.label :delivery_name %><br />
+            <%= f.text_field :delivery_name, autofocus: true, autocomplete: "delivery_name", placeholder:"令和道子" %>
+          </div>
+        </th>
+      </tr>
+    </table>
+<%= f.submit "確認画面へ進む", class: "btn btn-outline-secondary btn-block btn-secondary size"%>
+<% end %>

@@ -1,0 +1,75 @@
+<div class="container">
+<h3 class="row justify-content-start position">商品編集</h3>
+<%= form_with model: @item, url: admin_item_path, local:true do |f| %>
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>商品画像</th>
+          <th>
+            <div class="form-group">
+              <label for="imageSelection">
+                <%= f.attachment_field :image, id:"imageSelection", placeholder: "Image" %>
+              </label>
+            </div>
+          </th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>
+            <label for="item_name">商品名</label>
+          </th>
+          <th>
+            <input type="string" class="form-control" name="item[name]" id="item_name" value="<%= @item.name %>">
+          </th>
+          <th></th>
+        </tr>
+        <tr>
+     キ
+            <label for="item_introduction">商品説明</label>
+          </th>
+          <th>
+            <textarea class="form-control" name="item[introduction]" rows="4" cols="40" id="item_introduction"><%= @item.introduction %></textarea>
+          </th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>
+            <label>ジャンル</label>
+          </th>
+          <th>
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--"%>
+          </th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>
+            <label for="item_price">税抜価格</label>
+          </th>
+          <th>
+            <input type="integer" class="form-control" name="item[price]" id="item_price" value="<%= @item.price %>">
+          </th>
+          </th>
+          <th>円</th>
+        </tr>
+        <tr>
+          <th>
+            <label>販売ステータス</label>
+          </th>
+          <th>
+            <%= f.radio_button :is_active, true %>
+            <%= f.label :is_active, "販売中", {value: true, style: "display: inline-block;"} %>
+            <%= f.radio_button :is_active, false %>
+            <%= f.label :is_active, "販売停止中", {value: false, style: "display: inline-block;"} %>
+          </th>
+          <th></th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row justify-content-center">
+      <button type="submit" class="btn btn-primary">変更を保存</button>
+    </div>
+  </div>
+</div>
+<% end %>

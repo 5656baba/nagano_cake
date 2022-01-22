@@ -1,0 +1,53 @@
+<h1>配送先登録/一覧</h1>
+<%= form_with model: @address, url: addresses_path, local: true do |f| %>
+<table>
+  <tr>
+    <th>郵便番号（ハイフンなし）</th>
+    <th>
+      <div class="field">
+        <%= f.label :postal_code %><br />
+        <%= f.text_field :postal_code, autofocus: true, placeholder:"0000000" %>
+      </div>
+    </th>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <th>
+      <div class="field">
+        <%= f.label :address %><br />
+        <%= f.text_field :address, autofocus: true, placeholder:"東京都渋谷区代々木神園町0-0" %>
+      </div>
+    </th>
+  </tr>
+  <tr>
+    <th>宛名</th>
+    <th></th>
+    <th>
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, placeholder:"令和道子" %>
+      </div>
+    </th>
+    <th><button type="submit" class="btn btn-primary">新規登録</button></th>
+  </tr>
+</table>
+<% end %>
+<table>
+  <%= @addresses.each do |address| %>
+  <tr>
+    <th>郵便番号</th>
+    <th>住所</th>
+    <th>宛名</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><%= address.postal_code %></td>
+    <td><%= address.address %></td>
+    <td><%= address.name %></td>
+    <td>
+      <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-outline-secondary btn-block btn-secondary" %>
+      <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-outline-secondary btn-block btn-secondary size", data: {confirm: "Are you certain you want to delete this?"}%>
+    </td>
+  </tr>
+  <% end %>
+</table>
