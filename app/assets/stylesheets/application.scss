@@ -45,15 +45,12 @@ td.genre-name{
   width: 280px;
 }
 
-th.list-button{
-  white-space: nowrap;
-}
 
 table.order-show th{
   background-color: #808080;
 }
 
-table.order th, td{
+table th, td{
   white-space: nowrap;
 }
 
@@ -80,3 +77,81 @@ ul.admin-log-in>li{
   width: 150px;
   padding: 10px;
 }
+
+.pagination{
+  margin: 20px auto 0;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination span{
+  text-align: center;
+  width: 50px;
+}
+
+.pagination span:hover{
+  background-color:#f3f3f3;
+}
+
+.pagination span a{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.pagination span a:hover{
+  background-color: #f3f3f3;
+}
+
+table.customer-show th{
+  border: 0px none;
+}
+
+table.order-status td{
+  border: 0px none;
+}
+table.order-status th{
+  border: 0px none;
+}
+
+table.genre-search th{
+  white-space: nowrap;
+}
+
+.welcom>p{
+  width: 900px;
+  height: 100px;
+  padding: 30px 30px 30px 150px;
+  padding-left:1em;
+  text-indent:-1em;
+  font-size: 30px;
+  margin-left: 150px;
+}
+
+.text-left{
+  padding-left: 40px;
+}
+
+
+.customer-top{
+  display: flex;
+  padding-top: 120px;
+}
+
+.top-item{
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.new{
+  position: absolute;
+  left: 290px;
+  top: 340px;
+  width: 80pxpx;
+}
+
+.link{
+  text-align: right;
+}
+

@@ -1,38 +1,30 @@
-<table>
-  <thead>
-    <tr>
-      <th>ジャンル検索</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @genres.each do |genre| %>
-    <tr>
-      <th><%# link_to genre.name, %></th>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<div>
-  <h3>ようこそ、ながのCAKEへ！</br>
-      このサイトは、ケーキ販売のECサイトになります。</br>
-      会員でない方も商品の閲覧はできますが、</br>
-      購入には会員登録が必要になります。
-  </h3>
+<div class="container-fluid">
+ <div class="row">
+    <div class="text-left">
+      <%= render "public/bar/sidebar", genres: @genres %><br>
+    </div>
+    <div class="col-fluid-md-9">
+      <div class="welcom">
+      　<p>
+      　ようこそ、ながのCAKEへ！</br>
+        このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない方も商品の閲覧はできますが、</br>
+        購入には会員登録が必要になります。
+        </p>
+      </div>
+      <h3 class="new">新着商品</h3>
+      <div class="customer-top">
+        <% @item.each do |item| %>
+          <div class="top-item">
+            <%= link_to item_path(item.id) do %>
+              <%= attachment_image_tag item, :image, :fill, 200, 160, fallback: "no_image.jpg" %>
+            <% end %>
+            <p><%= item.name %></p>
+            <p>￥<%= item.price %></p>
+          </div>
+        <% end %>
+      </div>
+      <h3 class="link"><%= link_to "全ての商品を見る", items_path %></h3>
+    </div>
+  </div>
 </div>
-<div>
-  <h1>新着商品</h1>
-  <table>
-    <% @item.each do |item| %>
-    <tr>
-      <th><%= attachment_image_tag item, :image, :fill, 60, 60, fallback: "no_image.jpg" %></th>
-    </tr>
-    <tr>
-      <th><%= item.name %></th>
-    </tr>
-    <tr>
-      <th>￥<%= item.price %></th>
-    </tr>
-    <% end %>
-  </table>
-</div>
-<h3><%= link_to "全ての商品を見る", items_path %></h3>

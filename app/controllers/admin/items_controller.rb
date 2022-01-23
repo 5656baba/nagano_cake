@@ -1,4 +1,6 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @items=Item.all.page(params[:page]).per(10)
   end
@@ -25,6 +27,13 @@ class Admin::ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.update(item_params)
     redirect_to admin_item_path(item.id)
+  end
+
+  def search
+    params[:keyword] # 商品名で検索した場合
+    @items = Item.search(params[:keyword]).page(params[:page])
+    @keyword = params[:keyword]
+    render "index"
   end
 
   private

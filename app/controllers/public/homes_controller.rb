@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @item=Item.all
+    @item=Item.first(4)
     @genres=Genre.all
   end
 

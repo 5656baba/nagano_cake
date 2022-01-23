@@ -1,15 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def after_sign_up_path_for(resource)
-    if resource== :admin
-      admin_root_path
-    elsif resource== :customer
-       customers_path
-    end
-  end
-
   def after_sign_out_path_for(resource)
+    p resource  #p ターミナルに出力するだけ
     if resource== :admin
       new_admin_session_path
     elsif resource== :customer

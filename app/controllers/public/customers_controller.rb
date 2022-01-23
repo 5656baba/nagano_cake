@@ -1,4 +1,7 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :ensure_correct_user, only: [:show, :edit, :update, :withdraw, :unsubscribe]
+
   def show
     @customer=current_customer
   end
@@ -21,6 +24,12 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_active: false)
     reset_session
     redirect_to root_path
+  end
+
+  def ensure_correct_user
+    unless customer_id=current_customer.id
+    redirect_to root_path(current_customer)
+    end
   end
 
   private

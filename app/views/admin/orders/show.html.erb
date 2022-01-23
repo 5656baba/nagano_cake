@@ -1,7 +1,7 @@
 <div class="container">
   <h3 class="row justify-content-start position">注文履歴詳細</h3>
     <div class="col-md-7">
-      <table class="table">
+      <table class="table order-status">
         <tr>
           <th>購入者</th>
           <td><%= @order.customer.full_name %></td>
@@ -22,7 +22,7 @@
           <th>注文ステータス</th>
           <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
           <td>
-            <%= f.select :order_status, Order.order_statuses_i18n.invert %>
+            <%= f.select :order_status, Order.order_statuses_i18n.invert, class: "rounded" %>
           </td>
           <td>
             <%= f.submit "更新", class: "btn btn-outline-primary btn-block btn-primary size"%>
@@ -53,7 +53,7 @@
             <td><%= order_detail.amount %></td>
             <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), local: true do |f| %>
               <td>
-                <%= f.select :production_status, OrderDetail.production_statuses_i18n.invert %>
+                <%= f.select :production_status, OrderDetail.production_statuses_i18n.invert, class: "rounded" %>
               </td>
               <td>
                 <%= f.submit "更新", class: "btn btn-outline-primary btn-block btn-primary size"%>

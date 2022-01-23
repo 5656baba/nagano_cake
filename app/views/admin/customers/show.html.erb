@@ -1,50 +1,50 @@
 <div class="container">
 <h3 class="row justify-content-start position"><%= @customer.full_name %>さんの会員詳細</h3>
-  <div class="col-md-7">
-    <table class="table">
+  <div class="col-md-8">
+    <table class="table customer-show">
       <tr>
         <th>会員ID</th>
         <th><%= @customer.id %></th>
+        <th></th>
       </tr>
       <tr>
         <th>氏名</th>
-        <th><%= @customer.last_name %></th>
-        <th><%= @customer.first_name %></th>
+        <th colspan="2"><%= @customer.last_name %><%= @customer.first_name %></th>
       </tr>
       <tr>
         <th>フリガナ</th>
-        <th><%= @customer.last_name_kana %></th>
-        <th><%= @customer.first_name_kana %></th>
+        <th colspan="2"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></th>
       </tr>
         <th>郵便番号</th>
-        <th><%= @customer.postal_code %></th>
+        <th colspan="2"><%= @customer.postal_code %></th>
       </tr>
       </tr>
         <th>住所</th>
-        <th><%= @customer.address %></th>
+        <th colspan="2"><%= @customer.address %></th>
       </tr>
       </tr>
         <th>電話番号</th>
-        <th><%= @customer.telephone_number %></th>
+        <th colspan="2"><%= @customer.telephone_number %></th>
       </tr>
       </tr>
         <th>メールアドレス</th>
-        <th><%= @customer.email %></th>
+        <th colspan="2"><%= @customer.email %></th>
       </tr>
       <tr>
         <th>会員ステータス</th>
         <th>
           <% if @customer.is_active==true %>
-          有効
+          <p class="text-success">有効</p>
           <% else %>
-          退会
+          <p class="text-danger">退会</p>
           <% end %>
         </th>
+        <th></th>
       </tr>
       <tr>
         <th></th>
-        <th><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-outline-primary btn-block btn-primary size" %></th>
-        <th class="list-button"><%= link_to "注文履歴一覧を見る", admin_root_path(@customer.id), class: "btn btn-outline-primary btn-block btn-primary size" %></th>
+        <th class="list-button"><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-outline-primary btn-block btn-primary size" %></th>
+        <th class="list-button"><%= link_to "注文履歴一覧を見る", admin_root_path(@customer.id), class: "btn btn-outline-primary btn-primary size" %></th>
       </tr>
     </table>
   </div>

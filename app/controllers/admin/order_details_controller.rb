@@ -1,4 +1,6 @@
 class Admin::OrderDetailsController < ApplicationController
+  before_action :authenticate_admin!
+
   def update
     #params[:order_detail][:production_status]=params[:order_detail][:production_status].to_i
     order_detail = OrderDetail.find(params[:id])

@@ -1,0 +1,16 @@
+<div class="col-md-3">
+  <table class="table genre-search">
+    <thead>
+      <tr>
+        <th>ジャンル検索</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @genres.each do |genre| %>
+      <tr>
+        <th><%= link_to genre.name, items_path(genre_id: genre.id) %></th>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,17 +1,7 @@
-<table>
-  <thead>
-    <tr>
-      <th>ジャンル検索</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%# @genres.each do |genre| %>
-    <tr>
-      <th><%# link_to genre.name, %></th>
-    </tr>
-    <%# end %>
-  </tbody>
-</table>
+<div class="text-left">
+  <%= render "public/bar/sidebar", genres: @genres %><br>
+</div>
+
 <!--<%# count=0 %>-->
 
 <!--  <%# @items.each do |item| %>-->
@@ -29,4 +19,4 @@
   <% end %>
 </table>
 
-<%= paginate @items %>
+<%# paginate @items %>
