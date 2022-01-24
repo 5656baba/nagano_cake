@@ -1,12 +1,26 @@
-<h2>本当に退会しますか？</h2>
-
-<h2>退会すると、会員登録情報や</br>
-    これまでの購入履歴が閲覧できなくなります。</br>
-    退会する場合は「退会する」をクリックしてください。
-</h2>
-<table>
-  <tr>
-    <th><%= link_to "退会しない",customers_path %></th>
-    <th><%= link_to "退会する", withdraw_customers_path, method: :patch %></th>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 bye">
+      <div class="unsubscribe-text">
+        <div class="reary">
+          <h3>本当に退会しますか？</h3>
+        </div>
+        <div>
+          <h3>
+            退会すると、会員登録情報や</br>
+            これまでの購入履歴が閲覧できなくなります。</br>
+            退会する場合は「退会する」をクリックしてください。
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center unsubscribe-button">
+    <div class="col-md-3">
+      <div class="unsubscribe">
+        <p><%= link_to "退会しない",customers_path, class: "btn btn-outline-primary btn-block btn-primary size" %></p>
+        <p><%= link_to "退会する", withdraw_customers_path, method: :patch, class: "btn btn-outline-danger btn-block btn-danger size" %></p>
+      </div>
+    </div>
+  </div>
+</div>

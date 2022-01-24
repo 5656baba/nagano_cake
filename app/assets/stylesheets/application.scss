@@ -266,3 +266,132 @@ li{
 .address-form-2{
   padding-left: 170px;
 }
+
+.check-row{
+  margin-top: 50px;
+  margin-bottom: 0px;
+}
+
+.check-col{
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+table.check-table>td{
+  display: flex;
+  align: center;
+  valign: center;
+}
+
+table.table.table-bordered.check-sum {
+  margin-top: 25px;
+}
+
+.check-method>ul{
+  list-style-type: none;
+  display: flex;
+}
+
+
+.delivery-address{
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 25px;
+}
+
+.paypay{
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 25px;
+}
+
+.check{
+  background-color: #C0C0C0;
+}
+
+.thead{
+  background-color: #C0C0C0;
+}
+
+.col-md-12.complete{
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registrations{
+  display: flex;
+  width: 300px;
+}
+
+.info-edit{
+  margin-left: 100px;
+}
+
+.col-md-6.my-page{
+  margin-right: 500px;
+}
+
+.about-me{
+  font-size: 25px;
+  font-weight: 700;
+  margin-left: 100px;
+  background-color: #C0C0C0;
+  width: 125px;
+}
+
+.my-edit{
+  display: flex;
+  margin-top: 50px;
+}
+
+.order-history{
+  display: flex;
+}
+
+.delivery-index{
+  margin-left: 100px;
+}
+
+.history-index{
+  margin-left: 80px;
+}
+
+.order{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.member-edit{
+  display: flex;
+  justify-content: space-around;
+}
+
+.member-edit>p{
+  margin-left: 20px;
+}
+
+.unsubscribe-text{
+  text-align: center;
+}
+
+.unsubscribe{
+  display: flex;
+  justify-content: space-around;
+}
+
+.reary{
+  margin-bottom: 30px;
+}
+
+.col-md-12.bye{
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.unsubscribe-button{
+  margin-top: 50px;
+}
