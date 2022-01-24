@@ -3,12 +3,13 @@ class Public::ItemsController < ApplicationController
 
   def index
     @genres = Genre.all
-    @items = Item.where(genre_id: params[:genre_id])  #genreで検索した時
+    @items = Item.where(genre_id: params[:genre_id]).page(params[:page]).per(8)  #genreで検索した時
     if @items.empty?
-      @items = Item.all
+      @items = Item.all.page(params[:page]).per(8)
     else
       @genre = Genre.find(params[:genre_id])
     end
+
   end
 
   def show

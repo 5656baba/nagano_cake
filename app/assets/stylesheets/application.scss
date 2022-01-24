@@ -21,6 +21,18 @@
  color:#FFF;
 }
 
+.table td{
+  vertical-align: unset;
+}
+
+.table-bordered th{
+  border: 1px solid #212529;
+}
+
+.table-bordered td{
+  border: 1px solid #212529;
+}
+
 .position{
   margin: 20px 90px;
 }
@@ -155,3 +167,102 @@ table.genre-search th{
   text-align: right;
 }
 
+.items-each{
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.items-each>p{
+  padding: 0px;
+}
+
+.items-index{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0px;
+}
+
+span{
+  font-size: 25px;
+}
+
+.items-show>h3{
+  padding: 20px;
+}
+
+.items-show>h4{
+  padding: 20px;
+}
+
+.items-show>p{
+  padding: 20px;
+}
+
+.add-to-cart{
+  display: flex;
+}
+
+.select-box{
+  width: 150px;
+  height: 36px;
+  text-align: center;
+}
+
+.cart{
+  font-size: 25px;
+}
+
+table.cart-table>td{
+  display: flex;
+  align: center;
+  valign: center;
+}
+
+.cart-row{
+  margin-top: 50px;
+  margin-bottom: 48px;
+}
+
+.cart-item-table{
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.payment{
+  font-size: 20px;
+  font-weight: 800;
+}
+.payment-method>ul{
+  list-style-type: none;
+}
+
+.addressee>ul{
+  list-style-type: none;
+}
+.address{
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.new-address>ul{
+  list-style-type: none;
+  display: flex;
+}
+
+li{
+  font-weight: 500;
+  margin: 3px;
+}
+
+.address-form{
+  padding-left: 10px;
+}
+
+.address-form-1{
+  padding-left: 170px;
+}
+
+.address-form-2{
+  padding-left: 170px;
+}

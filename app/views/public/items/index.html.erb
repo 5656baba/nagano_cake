@@ -1,22 +1,27 @@
-<div class="text-left">
-  <%= render "public/bar/sidebar", genres: @genres %><br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="text-left">
+      <%= render "public/bar/sidebar", genres: @genres %><br>
+    </div>
+    <div class="col-md-9 justify-content-start">
+      <!--<%# count=0 %>-->
+      <!--  <%# @items.each do |item| %>-->
+      <!--  <%# count+=1 %>-->
+      <!--  <%# end %>-->
+      <!--<h1>商品一覧（全<%# count %>件）</h1>-->
+      <h1>商品一覧<span>（全<%= Item.count %>件）</span></h1>
+      <div class="items-index">
+        <% @items.each do |item| %>
+        <div class="items-each">
+          <p>
+            <%= attachment_image_tag item, :image, :fill, 200, 140, fallback: "no_image.jpg" %>
+          </p>
+          <p><%= link_to item.name, item_path(item.id) %></p>
+          <p>￥<%= item.price %></p>
+        </div>
+        <% end %>
+      </div>
+      <%= paginate @items %>
+    </div>
+  </div>
 </div>
-
-<!--<%# count=0 %>-->
-
-<!--  <%# @items.each do |item| %>-->
-<!--  <%# count+=1 %>-->
-<!--  <%# end %>-->
-<!--<h1>商品一覧（全<%# count %>件）</h1>-->
-<h1>商品一覧（全<%= @items.count %>件）</h1>
-<table>
-  <% @items.each do |item| %>
-  <tr>
-    <%= attachment_image_tag item, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
-  </tr>
-  <tr><%= link_to item.name, item_path(item.id) %></tr>
-  <tr>￥<%= item.price %></tr>
-  <% end %>
-</table>
-
-<%# paginate @items %>

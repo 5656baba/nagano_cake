@@ -1,59 +1,75 @@
-<h1>注文情報入力</h1>
-<%= form_with model: @order, url: check_orders_path, local: true do |f| %>
-<div>
-  <h3>支払い方法</h3>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-    <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-    <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
-</div>
-<div>
-  <h3>お届け先</h3>
-  <ul>
-    <li>
-      <%= f.radio_button :address_option, 0 %>
-      <%= f.label :address_option, "ご自身の住所", value: 0 %></br>
-      <%= current_customer.full_address %>
-    </li>
-    <li>
-      <%= f.radio_button :address_option, 1 %>
-      <%= f.label :address_option, "登録済み住所から選択", value: 1 %>
-      <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :full_address) %>
-    </li>
-    <li>
-      <%= f.radio_button :address_option, 2 %>
-      <%= f.label :address_option, "新しいお届け先",value: 2 %>
-    </li>
-  </ul>
-  </div>
-    <table>
-      <tr>
-          <th>郵便番号（ハイフンなし）</th>
-        <th>
-          <div class="field">
-            <%= f.label :delivery_postal_code %><br />
+<div class="container">
+  <h4 class="row justify-content-start position">注文情報入力</h4>
+  <div class="row justify-content-start">
+    <div class="col-md-5">
+    <%= form_with model: @order, url: check_orders_path, local: true do |f| %>
+      <p class="payment">支払い方法</p>
+      <div class="payment-method">
+        <ul>
+          <li>
+            <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+            <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+          </li>
+          <li>
+            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+            <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+    <div class="row justify-content-start">
+      <div class="col-md-10">
+        <p class="address">お届け先</p>
+        <div class="addressee">
+          <ul>
+            <li>
+              <%= f.radio_button :address_option, 0 %>
+              <%= f.label :address_option, "ご自身の住所", value: 0 %></br>
+            </li>
+            <li>
+              <%= current_customer.full_address %>
+            </li>
+            <li>
+              <%= f.radio_button :address_option, 1 %>
+              <%= f.label :address_option, "登録済み住所から選択", value: 1 %>
+            </li>
+            <li>
+              <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :full_address) %>
+            </li>
+            <li>
+              <%= f.radio_button :address_option, 2 %>
+              <%= f.label :address_option, "新しいお届け先",value: 2 %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="new-address">
+        <ul>
+          <li>郵便番号（ハイフンなし）</li>
+          <li class="address-form">
             <%= f.text_field :delivery_postal_code, autofocus: true, autocomplete: "delivery_postal_code", placeholder:"0000000" %>
-          </div>
-        </th>
-      </tr>
-      <tr>
-        <th>住所</th>
-        <th>
-          <div class="field">
-            <%= f.label :delivery_address %><br />
-            <%= f.text_field :delivery_address, autofocus: true, autocomplete: "delivery_address", placeholder:"東京都渋谷区代々木神園町0-0" %>
-          </div>
-        </th>
-      </tr>
-      <tr>
-        <th>宛名</th>
-        <th>
-          <div class="field">
-            <%= f.label :delivery_name %><br />
+          </li>
+        </ul>
+        <ul>
+          <li>住所</li>
+          <li class="address-form-1">
+            <%= f.text_field :delivery_address, autofocus: true, autocomplete: "delivery_address", placeholder:"東京都渋谷区代々木神園町0-0", size: 60 %>
+          </li>
+        </ul>
+        <ul>
+          <li>宛名</li>
+          <li class="address-form-2">
             <%= f.text_field :delivery_name, autofocus: true, autocomplete: "delivery_name", placeholder:"令和道子" %>
-          </div>
-        </th>
-      </tr>
-    </table>
-<%= f.submit "確認画面へ進む", class: "btn btn-outline-secondary btn-block btn-secondary size"%>
-<% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-2">
+        <%= f.submit "確認画面へ進む", class: "btn btn-outline-primary btn-block btn-primary size"%>
+      </div>
+    </div>
+  </div>
+    <% end %>
+</div>
