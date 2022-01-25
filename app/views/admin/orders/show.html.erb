@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 class="row justify-content-start position">注文履歴詳細</h3>
+  <h3 class="row justify-content-start position"><span class="thead">注文履歴詳細</span></h3>
     <div class="col-md-7">
       <table class="table order-status">
         <tr>
@@ -49,7 +49,7 @@
           <tr>
             <% subtotal=(order_detail.item.tax_price)*order_detail.amount %>
             <td><%= order_detail.item.name %></td>
-            <td><%= subtotal %></td>
+            <td><%= subtotal.to_s(:delimited) %></td>
             <td><%= order_detail.amount %></td>
             <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), local: true do |f| %>
               <td>
@@ -69,15 +69,15 @@
       <table class="order">
         <tr>
           <th>商品合計</th>
-          <td><%= sum %>円</td>
+          <td><%= sum.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <th>送料</th>
-          <td><%= @order.sipping_fee %>円</td>
+          <td><%= @order.sipping_fee.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <th>請求金額合計</th>
-          <td><%= sum+@order.sipping_fee %>円</td>
+          <td><%= (sum+@order.sipping_fee).to_s(:delimited) %>円</td>
         </tr>
       </table>
     </div>

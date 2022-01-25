@@ -1,20 +1,18 @@
 <div class="container">
-<h3 class="row justify-content-start position">管理者ログイン</h3>
+<h3 class="row justify-content-start position"><span class="thead">管理者ログイン</span></h3>
   <div class="row justify-content-center">
     <%= form_with(model: resource, url: session_path(resource_name)) do |f| %>
       <div class="col-md-10">
-        <ul class="admin-log-in">
-          <li>メールアドレス</li>
+        <ul class="log-in">
+          <li class="admin-li">メールアドレス</li>
           <li><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", class: "rounded form" %></li>
-          <li>パスワード</li>
+          <li class="admin-li">パスワード</li>
           <li><%= f.password_field :password, autocomplete: "current-password", class: "rounded form"%></li>
         </ul>
       </div>
       <div class="row justify-content-center">
-        <div><%= f.submit "ログイン", class: 'btn btn-primary button-size' %></div>
+        <div><%= f.submit "ログイン", class: 'btn btn-primary button-size size' %></div>
       </div>
     <% end %>
   </div>
 </div>
-
-

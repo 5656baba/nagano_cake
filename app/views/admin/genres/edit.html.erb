@@ -1,9 +1,9 @@
 <div class="container">
-<h3 class="row justify-content-start position">ジャンル編集</h3>
+<h3 class="row justify-content-start position"><span class="thead">ジャンル編集</span></h3>
 <%= form_with model: @genre, url: admin_genre_path, local:true do |f| %>
 <div class="genre">
   <p>ジャンル名</p>
   <p><%= f.text_field :name %></p>
-  <p><%= f.submit '変更を保存', class: 'btn btn-primary' %></p>
+  <p><%= f.submit '変更を保存', class: 'btn btn-success' %></p>
 </div>
 <% end %>

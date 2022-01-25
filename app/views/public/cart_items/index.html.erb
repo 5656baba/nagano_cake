@@ -1,18 +1,18 @@
 <div class="container">
   <div class="row cart-row">
-    <div class="col-md-4 cart">ショッピングカート</div>
+    <div class="col-md-4 cart"><span class="thead">ショッピングカート</span></div>
     <div class="col-md-3 offset-md-5">
       <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-outline-danger btn-block btn-danger size", data: { confirm: "Are you certain you want to delete this?" } %>
     </div>
     <div class="col-md-12 cart-item-table">
       <table class="table table-bordered cart-table">
         <tr>
-          <th>商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th></th>
-          <th>小計</th>
-          <th></th>
+          <th class="thead">商品名</th>
+          <th class="thead">単価（税込）</th>
+          <th class="thead">数量</th>
+          <th class="thead"></th>
+          <th class="thead">小計</th>
+          <th class="thead"></th>
         </tr>
         <% sum=0 %>
         <% @cart_items.each do |cart_item| %>
@@ -21,7 +21,7 @@
             <%= attachment_image_tag cart_item.item, :image, :fill, 100, 60, fallback: "no_image.jpg" %>
             <%= cart_item.item.name %>
           </td>
-          <td><%= cart_item.item.tax_price %></td>
+          <td><%= cart_item.item.tax_price.to_s(:delimited) %></td>
           <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
             <td>
               <%= f.select :amount, *[1..10], {prompt: "cart_item.amount"} %>
@@ -31,7 +31,7 @@
             </td>
           <% end %>
           <% subtotal=(cart_item.item.tax_price)*cart_item.amount %>
-          <td><%= subtotal %></td>
+          <td><%= subtotal.to_s(:delimited) %></td>
           <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-outline-danger btn-block btn-danger size", data: { confirm: "Are you certain you want to delete this?" } %></td>
           <% sum+=subtotal %>
         </tr>
@@ -42,8 +42,8 @@
       <div class="col-md-3 offset-md-6">
         <table class="table table-bordered">
           <tr>
-            <th>合計金額</th>
-            <td><%= sum %></td>
+            <th class="thead">合計金額</th>
+            <td><%= sum.to_s(:delimited) %></td>
           </tr>
         </table>
       </div>

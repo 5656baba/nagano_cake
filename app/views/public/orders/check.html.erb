@@ -1,7 +1,5 @@
 <div class="container">
-  <div class="row check-row">
-    <div class="col-md-4 check">注文情報確認</div>
-  </div>
+ <h3 class="row justify-content-start position"><span class="thead">注文情報確認</span></h3>
   <div class="row justify-content-start">
     <div class="col-md-8 check-col">
       <table class="table table-bordered check-table">
@@ -22,9 +20,9 @@
               <%= attachment_image_tag cart_item.item, :image, :fill, 70, 40, fallback: "no_image.jpg" %>
               <%= cart_item.item.name %>
             </td>
-            <td><%= cart_item.item.tax_price %></td>
+            <td><%= cart_item.item.tax_price.to_s(:delimited) %></td>
             <td><%= cart_item.amount %></td>
-            <td><%= subtotal %></td>
+            <td><%= subtotal.to_s(:delimited) %></td>
             <% sum+=subtotal %>
           </tr>
           <% end %>
@@ -35,15 +33,15 @@
       <table class="table table-bordered check-sum">
         <tr>
           <th class="thead">送料</th>
-          <th><%= @sipping_fee %></th>
+          <th><%= @sipping_fee.to_s(:delimited) %></th>
         </tr>
         <tr>
           <th class="thead">商品合計</th>
-          <th><%= sum %></th>
+          <th><%= sum.to_s(:delimited) %></th>
         </tr>
         <tr>
           <th class="thead">請求金額</th>
-          <th><%= sum+@sipping_fee %></th>
+          <th><%= (sum+@sipping_fee).to_s(:delimited) %></th>
         </tr>
       </table>
     </div>

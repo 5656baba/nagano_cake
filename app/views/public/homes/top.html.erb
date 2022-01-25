@@ -20,7 +20,7 @@
               <%= attachment_image_tag item, :image, :fill, 200, 160, fallback: "no_image.jpg" %>
             <% end %>
             <p><%= item.name %></p>
-            <p>￥<%= item.price %></p>
+            <p>￥<%= item.price.to_s(:delimited) %></p>
           </div>
         <% end %>
       </div>

@@ -1,5 +1,5 @@
 <div class="container">
-<h3 class="row justify-content-start position"><%= @customer.full_name %>さんの会員詳細</h3>
+<h3 class="row justify-content-start position"><span class="thead"><%= @customer.full_name %>さんの会員詳細</span></h3>
   <div class="col-md-8">
     <table class="table customer-show">
       <tr>
@@ -43,7 +43,7 @@
       </tr>
       <tr>
         <th></th>
-        <th class="list-button"><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-outline-primary btn-block btn-primary size" %></th>
+        <th class="list-button"><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-outline-success btn-block btn-success size" %></th>
         <th class="list-button"><%= link_to "注文履歴一覧を見る", admin_root_path(@customer.id), class: "btn btn-outline-primary btn-primary size" %></th>
       </tr>
     </table>

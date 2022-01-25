@@ -1,37 +1,26 @@
-<h1>ログイン</h1>
-
-<h3>会員の方はこちらからログイン</h3>
-
-<%= form_with(model: resource, url: session_path(resource_name)) do |f| %>
-<table>
-  <tr>
-    <th>メールアドレス</th>
-    <th>
-      <div class="field">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="row justify-content-start position">
+    <p><span class="thead">ログイン</span></br>
+       <span class="log-text">会員の方はこちらからログイン</span>
+    </p>
+  </div>
+  <div class="row justify-content-center">
+  <%= form_with(model: resource, url: session_path(resource_name)) do |f| %>
+    <div class="col-md-10">
+      <ul class="log-in">
+        <li class="admin-li">メールアドレス</li>
+        <li><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "rounded form" %></li>
+        <li class="admin-li">パスワード</li>
+        <li><%= f.password_field :password, autocomplete: "current-password", class: "rounded form" %></li>
+      </ul>
+      <div class="row justify-content-center">
+        <div><%= f.submit "ログイン", class: 'btn btn-primary button-size size cus-log' %></div>
       </div>
-    </th>
-  </tr>
-  <tr>
-    <th>パスワード</th>
-    <th>
-      <div class="field">
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
-    </th>
-  </tr>
-  <tr>
-    <th></th>
-    <th>
-      <div class="actions">
-        <%= f.submit "ログイン" %>
-      </div>
-    </th>
-  </tr>
-</table>
+    </div>
+  </div>
 <% end %>
-
-<h3>会員登録がお済みでない方</br>
-<%= link_to "こちら",new_customer_registration_path %>から新規登録を行ってください。</h3>
+  <h3 class="not-log">会員登録がお済みでない方</h3>
+  <p class="kana-log"><%= link_to "こちら",new_customer_registration_path %>から新規登録を行ってください。</p>
+</div>
 
 

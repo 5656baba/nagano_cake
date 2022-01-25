@@ -9,7 +9,7 @@
     <div class="col-md-5 items-show">
       <h3><%= @item.name %></h3>
       <p><%= @item.introduction %></p>
-      <h4>￥<%= @item.tax_price %>（税込）</h4>
+      <h4>￥<%= @item.tax_price.to_s(:delimited) %>（税込）</h4>
       <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
       <div class="add-to-cart">
         <%= f.hidden_field :item_id, value: @item.id  %>
