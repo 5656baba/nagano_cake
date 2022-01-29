@@ -1,9 +1,19 @@
 <div class="container-fluid">
+  <div class="error_message">
+    <% if @cart_item.errors.any? %>
+      <h2><%= @cart_item.errors.count %>errors prohibited this obj from being saved:</h2>
+      <ul>
+      <% @cart_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      </ul>
+      <% end %>
+    <% end %>
+  </div>
   <div class="row">
     <div class="text-left">
       <%= render "public/bar/sidebar", genres: @genres %><br>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 item-image">
       <%= attachment_image_tag @item, :image, :fill, 400, 300, fallback: "no_image.jpg" %>
     </div>
     <div class="col-md-5 items-show">

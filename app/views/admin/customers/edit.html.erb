@@ -1,4 +1,14 @@
 <div class="container">
+  <div class="error_message">
+    <% if @customer.errors.any? %>
+      <h2><%= @customer.errors.count %>errors prohibited this obj from being saved:</h2>
+      <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      </ul>
+      <% end %>
+    <% end %>
+  </div>
 <h3 class="row justify-content-start position"><span class="thead"><%= @customer.full_name %>さんの会員情報編集</span></h3>
 <%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
   <div class="row justify-content-start">

@@ -1,4 +1,14 @@
 <div class="container">
+  <div class="error_message">
+    <% if @genre.errors.any? %>
+      <h2><%= @genre.errors.count %>errors prohibited this obj from being saved:</h2>
+      <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      </ul>
+      <% end %>
+    <% end %>
+  </div>
 <h3 class="row justify-content-start position"><span class="thead">ジャンル一覧・追加</span></h3>
 <%= form_with model:@genre, url: admin_genres_path, local:true do |f| %>
 <div class="genre">

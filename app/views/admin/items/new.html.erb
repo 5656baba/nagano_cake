@@ -1,4 +1,14 @@
 <div class="container">
+  <div class="error_message">
+    <% if @item.errors.any? %>
+      <h2><%= @item.errors.count %>errors prohibited this obj from being saved:</h2>
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      </ul>
+      <% end %>
+    <% end %>
+  </div>
   <h3 class="row justify-content-start position"><span class="thead">商品新規登録</span></h3>
   <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
     <div class="row justify-content-center">

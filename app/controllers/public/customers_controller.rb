@@ -11,9 +11,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    customer = current_customer  #今回はcustomer_id飛ばしてないから最初からcustomer=current_customerを入れておく
-    customer.update(customer_params)
-    redirect_to customers_path
+    @customer = current_customer  #今回はcustomer_id飛ばしてないから最初からcustomer=current_customerを入れておく
+    if @customer.update(customer_params)
+      redirect_to customers_path
+    else
+      render :edit
+    end
   end
 
   def unsubscribe
@@ -23,6 +26,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_active: false)
     reset_session
+    flash[:notice] = "退会手続きが完了いたしました。ご利用いただき誠にありがとうございました。"
     redirect_to root_path
   end
 

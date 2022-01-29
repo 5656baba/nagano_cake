@@ -19,6 +19,7 @@ class Public::OrdersController < ApplicationController
     @sipping_fee=800
     @cart_items=CartItem.all
     @order=Order.new(order_params)
+    @order.order_status=0
     @order.customer_id=current_customer.id
     @order.payment_method=params[:order][:payment_method]
     if params[:order][:address_option]=="0"  #ラジオボタンの0を選んだら
@@ -34,6 +35,24 @@ class Public::OrdersController < ApplicationController
       @order.delivery_postal_code=params[:order][:delivery_postal_code]
       @order.delivery_address=params[:order][:delivery_address]
       @order.delivery_name=params[:order][:delivery_name]
+      if @order.delivery_postal_code=="" || @order.delivery_address=="" || @order.delivery_name==""
+        flash.now[:notice] = "新しい配送先の情報を全て入力してください"
+        @addresses=current_customer.addresses
+        render :new
+      end
+    end
+    if @order.payment_method==nil && params[:order][:address_option]!=nil
+      flash.now[:notice] = "お支払方法を選択してください"
+      @addresses=current_customer.addresses
+      render :new
+    elsif params[:order][:address_option]==nil && @order.payment_method!=nil
+      flash.now[:notice] = "お届け先を選択してください"
+      @addresses=current_customer.addresses
+      render :new
+    elsif @order.payment_method==nil && params[:order][:address_option]==nil
+      flash.now[:notice] = "お支払方法・お届け先を選択してください"
+      @addresses=current_customer.addresses
+      render :new
     end
   end
 
@@ -41,6 +60,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    #binding.pry
     order=Order.new(order_params)
     order.save
     @cart_items=current_customer.cart_items  #createはnewとsave一緒に行うメソッド
@@ -57,6 +77,6 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :delivery_postal_code, :delivery_address, :delivery_name, :sipping_fee, :billing_amount, :customer_id)
+    params.require(:order).permit(:payment_method, :delivery_postal_code, :delivery_address, :delivery_name, :sipping_fee, :billing_amount, :customer_id, :order_status)
   end
 end

@@ -132,6 +132,7 @@ table.order-status th{
 
 table.genre-search{
   border: 1px solid black;
+  margin-top: 10px;
 }
 table.genre-search th{
   white-space: nowrap;
@@ -167,7 +168,7 @@ table.genre-search th{
 .new{
   position: absolute;
   left: 290px;
-  top: 340px;
+  top: 300px;
   width: 80pxpx;
 }
 
@@ -495,4 +496,22 @@ table.order-content-table{
   position: absolute;
   right: 10px;
   top: 80px;
+}
+
+.item-image{
+  padding-top: 30px;
+}
+
+.flash{
+  font-size: 30px;
+  color: #F00;
+}
+
+.error_message{
+  color: #F00;
+}
+
+.flash-withdraw{
+  font-size: 25px;
+  color: #FF82B2;
 }

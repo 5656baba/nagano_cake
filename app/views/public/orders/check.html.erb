@@ -70,6 +70,7 @@
         <%= f.hidden_field :sipping_fee, value: @sipping_fee %>
         <%= f.hidden_field :billing_amount, value: sum+@sipping_fee %>
         <%= f.hidden_field :customer_id, value: @order.customer_id %>
+        <%= f.hidden_field :order_status, value: @order.order_status %>
         <%= f.submit "注文を確定する", class: "btn btn-outline-success btn-block btn-success size" %>
       <% end %>
     </div>

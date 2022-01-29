@@ -1,4 +1,9 @@
 <div class="container">
+  <% if flash[:notice] %>
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
   <div class="row justify-content-start position">
     <p><span class="thead">ログイン</span></br>
        <span class="log-text">会員の方はこちらからログイン</span>

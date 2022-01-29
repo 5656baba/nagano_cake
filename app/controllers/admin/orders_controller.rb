@@ -10,6 +10,11 @@ class Admin::OrdersController < ApplicationController
     #params[:order][:order_status]=params[:order][:order_status].to_i
     order = Order.find(params[:id])
     order.update(order_params)
+    if order.order_status=="payment_confirmation"
+      order.order_details.each do |order_detail|
+        order_detail.update(production_status:"production_pending")
+      end
+    end
     redirect_to admin_order_path(order.id)
   end
 

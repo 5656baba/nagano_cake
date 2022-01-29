@@ -2,7 +2,7 @@
   <div class="row cart-row">
     <div class="col-md-4 cart"><span class="thead">ショッピングカート</span></div>
     <div class="col-md-3 offset-md-5">
-      <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-outline-danger btn-block btn-danger size", data: { confirm: "Are you certain you want to delete this?" } %>
+      <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-outline-danger btn-block btn-danger size", data: { confirm: "カート内を空にしますか？" } %>
     </div>
     <div class="col-md-12 cart-item-table">
       <table class="table table-bordered cart-table">
@@ -51,7 +51,9 @@
   </div>
     <div class="row justify-content-center">
       <div class="col-md-2 align-self-center">
-        <%= link_to "情報入力に進む", new_order_path, class: "btn btn-outline-success btn-block btn-success size" %>
+        <% if @cart_items.present? %>
+          <%= link_to "情報入力に進む", new_order_path, class: "btn btn-outline-success btn-block btn-success size" %>
+        <% end %>
       </div>
     </div>
 </div>

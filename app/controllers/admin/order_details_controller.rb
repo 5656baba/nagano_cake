@@ -5,8 +5,15 @@ class Admin::OrderDetailsController < ApplicationController
     #params[:order_detail][:production_status]=params[:order_detail][:production_status].to_i
     order_detail = OrderDetail.find(params[:id])
     order_detail.update(order_detail_params)
-    order=order_detail.order.id
-    redirect_to admin_order_path(order)
+    #order=order_detail.order.id
+    if order_detail.production_status=="in_production"
+      order_detail.order.update(order_status:"in_production")
+    elsif order_detail.production_status=="production_complete"
+      order_detail.order.update(order_status:"preparing_delivery")
+    else
+      order_detail.update(order_detail_params)
+    end
+    redirect_to admin_order_path(order_detail.order)
   end
 
   private
