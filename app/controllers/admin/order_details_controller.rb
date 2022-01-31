@@ -8,7 +8,7 @@ class Admin::OrderDetailsController < ApplicationController
     #order=order_detail.order.id
     if order_detail.production_status=="in_production"
       order_detail.order.update(order_status:"in_production")
-    elsif order_detail.production_status=="production_complete"
+    elsif order_detail.order.order_details.pluck(:production_status).all?{|a| a == "production_complete" }
       order_detail.order.update(order_status:"preparing_delivery")
     else
       order_detail.update(order_detail_params)
